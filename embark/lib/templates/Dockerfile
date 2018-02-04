@@ -13,3 +13,11 @@ USER "${CONTAINER_USER}"
 WORKDIR "${APP_DIR}"
 
 RUN mix local.hex --force && mix local.rebar --force
+
+COPY mix.* ./
+COPY config ./config
+RUN mix deps.get && mix deps.compile
+
+COPY . ./
+
+CMD ["mix", "run", "--no-halt"]
