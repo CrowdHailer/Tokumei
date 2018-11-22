@@ -36,12 +36,12 @@ Includes:
 - `--module`: Used to name the top level module used in the generated project.
   Without this option the module name will be generated from path option.
 
-```sh
-$ mix raxx.kit my_app
+  ```sh
+  $ mix raxx.kit my_app
 
-# Is equivalent to
-$ mix raxx.kit my_app --module MyApp
-```
+  # Is equivalent to
+  $ mix raxx.kit my_app --module MyApp
+  ```
 
 - `--no-exsync`: Doesn't include exsync in the generated project. Changed
   files won't be rebuilt on the fly when the app is running.
