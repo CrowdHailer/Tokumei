@@ -1,0 +1,5 @@
+<%= if !@node_assets do %>window.app = {
+  show: function (title) {
+    console.log(title)
+  }
+}<% end %>

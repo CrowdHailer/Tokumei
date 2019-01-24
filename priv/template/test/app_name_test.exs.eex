@@ -1,0 +1,5 @@
+defmodule <%= @module %>Test do
+  use ExUnit.Case
+  doctest <%= @module %>
+
+end

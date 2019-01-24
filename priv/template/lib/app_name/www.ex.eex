@@ -1,0 +1,14 @@
+defmodule <%= @module %>.WWW do
+  use Ace.HTTP.Service, port: 8080, cleartext: true
+  use Raxx.Router
+
+  section [], [
+    {%{path: []}, <%= @module %>.WWW.HomePage},
+    {_, <%= @module %>.WWW.NotFoundPage}
+  ]
+
+  @external_resource "lib/<%= @name %>/public/main.css"
+  @external_resource "lib/<%= @name %>/public/main.js"
+  use Raxx.Static, "./public"
+  use Raxx.Logger, level: :info
+end
