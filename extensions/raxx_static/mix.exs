@@ -25,8 +25,8 @@ defmodule RaxxStatic.MixProject do
 
   defp deps do
     [
-      {:raxx, "~> 0.17.0"},
-      {:mime, "~> 1.1"},
+      {:raxx, github: "crowdhailer/raxx", branch: "release-1.0"},
+      {:mime, "~> 1.3"},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
