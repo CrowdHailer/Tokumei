@@ -1,0 +1,22 @@
+defmodule <%= @module %>.API.Router do
+  use Raxx.Router
+  alias <%= @module %>.API.Actions
+
+  def stack(config) do
+    Raxx.Stack.new(
+      [
+        # {CORS.Raxx, :todo}
+      ],
+      {__MODULE__, config}
+    )
+  end
+
+  # Call GreetUser and in WWW dir AND call into lib
+  section [{Raxx.Logger, Raxx.Logger.setup(level: :info)}], [
+    {%{path: []}, Actions.GenerateGreeting},
+  ]
+
+  section [{Raxx.Logger, Raxx.Logger.setup(level: :debug)}], [
+    {_, Actions.NotFoundPage}
+  ]
+end

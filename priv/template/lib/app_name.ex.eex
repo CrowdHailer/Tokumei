@@ -1,2 +1,4 @@
 defmodule <%= @module %> do
+  def greet(name, ) do
+  end
 end

@@ -1,0 +1,30 @@
+defmodule <%= @module %>.API.Actions.GenerateGreeting do
+  use Raxx.SimpleServer, on_failure: API.encode_failure()
+  alias <%= @module %>.API
+
+  @impl Raxx.SimpleServer
+  def handle_request(_request = %{method: :GET}, _state) do
+    title = "Raxx.Kit"
+
+    response(:ok)
+    |> render(title)
+  end
+
+  def handle_request(request = %{method: :POST}, _state) do
+    OK.try do
+      # returns bad for invalid accept, content-type
+      data <- API.decode_payload(request)
+      _ <- API.check_acceptable(request)
+    after
+      greeting = <%= @module %>.greet(Map.get(data, "name"))
+
+      response(:ok)
+      # encode error/failure/sanfu function
+      |> encode_payload(%{"message" => greeting})
+    rescue
+      # just return responses
+      response ->
+        response
+    end
+  end
+end
